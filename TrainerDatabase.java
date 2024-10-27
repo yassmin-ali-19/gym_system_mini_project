@@ -138,8 +138,13 @@ public class TrainerDatabase implements Database<Trainer>{
     public void saveToFile(){
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
+            boolean firstRecord = true;
             for(Trainer record:records){
-                writer.write(record.lineRepresentation());
+                if(firstRecord)
+                    writer.write(record.lineRepresentation());
+                else
+                    writer.write("\n" + record.lineRepresentation());
+                firstRecord = false;
             }
             writer.close();
         } catch (IOException e) {

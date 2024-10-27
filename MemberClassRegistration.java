@@ -8,6 +8,7 @@ public class MemberClassRegistration extends Line{
     private String status;
     private LocalDate registrationDate;
     
+//    CONSTRUCTOR
     public MemberClassRegistration(String memberId,String classId,LocalDate registrationDate,String status)
     {
         this.classId=classId;
@@ -15,7 +16,14 @@ public class MemberClassRegistration extends Line{
         this.registrationDate=registrationDate;
         this.status=status;
     }
-
+    
+//    SETTERS & GETTERS
+    public void setRegistrationStatus(String status){
+        this.status = status;
+    }
+    public LocalDate getRegistrationDate(){
+        return this.registrationDate;
+    }
     public String getMemberID ()
     {
         return this.memberId;
@@ -24,10 +32,8 @@ public class MemberClassRegistration extends Line{
     {
         return this.classId;
     }
-    public LocalDate getRegistrationDate()
-    {
-        return this.registrationDate;
-    }
+
+//    METHODS
     
     @Override
     public String lineRepresentation() {

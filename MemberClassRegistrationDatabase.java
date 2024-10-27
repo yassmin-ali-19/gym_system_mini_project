@@ -139,8 +139,13 @@ public class MemberClassRegistrationDatabase implements Database<MemberClassRegi
     public void saveToFile(){
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
+            boolean firstRecord = true;
             for(MemberClassRegistration record:records){
-                writer.write(record.lineRepresentation());
+                if(firstRecord)
+                    writer.write(record.lineRepresentation());
+                else
+                    writer.write("\n" + record.lineRepresentation());
+                firstRecord = false;
             }
             writer.close();
         } catch (IOException e) {

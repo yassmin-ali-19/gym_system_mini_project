@@ -138,8 +138,13 @@ public class MemberDatabase implements Database<Member>{
     public void saveToFile(){
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
+            boolean firstRecord = true;
             for(Member record:records){
-                writer.write(record.lineRepresentation());
+                if(firstRecord)
+                    writer.write(record.lineRepresentation());
+                else
+                    writer.write("\n" + record.lineRepresentation());
+                firstRecord = false;
             }
             writer.close();
         } catch (IOException e) {
