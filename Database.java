@@ -15,9 +15,10 @@ public interface Database<T>{
         
 //    METHODS
     public void readFromFile();
-    public void createRecordFrom(String line);
+    public T createRecordFrom(String line);
     public ArrayList<T> returnAllRecords();
     public boolean contains(String key);
+    public T getRecord(String key);
     public void insertRecord(T record);
     public void deleteRecord(String key);
     public void saveToFile();

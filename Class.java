@@ -1,5 +1,4 @@
-package trainer;
-
+package lab.pkg4.gym.management.system;
 
 public class Class extends Line {
     private String classId;

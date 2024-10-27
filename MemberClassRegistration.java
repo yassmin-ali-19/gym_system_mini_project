@@ -1,4 +1,4 @@
-package trainer;
+package lab.pkg4.gym.management.system;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -8,7 +8,7 @@ public class MemberClassRegistration extends Line{
     private String status;
     private LocalDate registrationDate;
     
-    public MemberClassRegistration(String memberId,String classId,String status,LocalDate registrationDate)
+    public MemberClassRegistration(String memberId,String classId,LocalDate registrationDate,String status)
     {
         this.classId=classId;
         this.memberId=memberId;
