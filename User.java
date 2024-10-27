@@ -1,4 +1,4 @@
-package lab.pkg4.gym.management.system;
+package trainer;
 
 abstract class User extends Line {
     private String name;

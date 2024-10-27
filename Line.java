@@ -1,4 +1,4 @@
-package lab.pkg4.gym.management.system;
+package trainer;
 
 public abstract class Line {
     abstract String lineRepresentation();

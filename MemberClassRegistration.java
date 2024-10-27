@@ -1,4 +1,4 @@
-package lab.pkg4.gym.management.system;
+package trainer;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

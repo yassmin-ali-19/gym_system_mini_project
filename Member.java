@@ -1,4 +1,4 @@
-package lab.pkg4.gym.management.system;
+package trainer;
 
 public class Member extends User {
     private String memberId;

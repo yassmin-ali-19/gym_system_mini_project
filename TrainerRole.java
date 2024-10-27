@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package lab.pkg4.gym.management.system;
+package trainer;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -29,7 +29,7 @@ public class TrainerRole {
         memberDatabase.saveToFile();
     }
     
-    public ArrayList getListOfMembers ()
+    public ArrayList<Member> getListOfMembers ()
     {
        return memberDatabase.returnAllRecords();
     }
@@ -39,7 +39,7 @@ public class TrainerRole {
         classDatabase.insertRecord(new Class(classID,className,trainerID,duration,maxParticipants));
         classDatabase.saveToFile();
     }
-    public ArrayList getListOfClasses ()
+    public ArrayList<Class> getListOfClasses ()
     {
         return classDatabase.returnAllRecords();
     }
@@ -50,6 +50,7 @@ public class TrainerRole {
          if(flag==1){
          registrationDatabase.insertRecord(new MemberClassRegistration(memberID,classID,registrationDate,"active"));
          newclass.setAvailableSeats(newclass.getAvailableSeats()-1);
+         registrationDatabase.saveToFile();
          return true;
          }
          else return false;
@@ -67,6 +68,7 @@ public class TrainerRole {
             registration.setRegistrationStatus("canceled");
             Class classs = classDatabase.getRecord(classID);
             classs.setAvailableSeats(classs.getAvailableSeats()+1);
+            registrationDatabase.saveToFile();
             return true;
         }
         return false;
@@ -75,6 +77,13 @@ public class TrainerRole {
     public ArrayList<MemberClassRegistration> getListOfRegistrations () {
         return registrationDatabase.returnAllRecords();
     }
+    public void logout ()
+    {
+        memberDatabase.saveToFile();
+        classDatabase.saveToFile();
+        registrationDatabase.saveToFile();
+    }
+            
 
    
 }
