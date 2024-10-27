@@ -123,6 +123,7 @@ public class MemberDatabase implements Database<Member>{
         for(Member record:this.records){
             if(key.equals(record.getSearchKey())){
                 this.records.remove(i);
+                saveToFile();
                 return;
             }
             i++;

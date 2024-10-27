@@ -123,6 +123,7 @@ public class ClassDatabase implements Database<Class>{
         for(Class record:this.records){
             if(key.equals(record.getSearchKey())){
                 this.records.remove(i);
+                saveToFile();
                 return;
             }
             i++;

@@ -124,6 +124,7 @@ public class MemberClassRegistrationDatabase implements Database<MemberClassRegi
         for(MemberClassRegistration record:this.records){
             if(key.equals(record.getSearchKey())){
                 this.records.remove(i);
+                saveToFile();
                 return;
             }
             i++;

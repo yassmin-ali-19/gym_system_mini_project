@@ -123,6 +123,7 @@ public class TrainerDatabase implements Database<Trainer>{
         for(Trainer record:this.records){
             if(key.equals(record.getSearchKey())){
                 this.records.remove(i);
+                saveToFile();
                 return;
             }
             i++;
