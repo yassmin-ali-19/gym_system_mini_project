@@ -97,7 +97,6 @@ public class TrainerRoleWindow extends JFrame implements ActionListener{
         if(e.getSource() == this.addMemberB){
             AddMemberWindow addMemberWindow = new AddMemberWindow();
             addMemberWindow.showFrame();
-            dispose();
         }
         if(e.getSource() == this.viewMembersB){
             ViewMembersWindow viewMembersWindow = new ViewMembersWindow();
@@ -106,16 +105,18 @@ public class TrainerRoleWindow extends JFrame implements ActionListener{
         if(e.getSource() == this.addClassB){
             AddClassWindow addClassWindow = new AddClassWindow();
             addClassWindow.showFrame();
-            dispose();
         }
         if(e.getSource() == this.viewClassesB){
             ViewClassesWindow viewClassesWindow = new ViewClassesWindow();
             viewClassesWindow.showFrame();
         }
         if(e.getSource() == this.registerMemberForClassB){
-            AddClassWindow addClassWindow = new AddClassWindow();
-            addClassWindow.showFrame();
-            dispose();
+            RegisterMemberForClassWindow registerMemberForClassWindow = new RegisterMemberForClassWindow();
+            registerMemberForClassWindow.showFrame();
+        }
+        if(e.getSource() == this.cancelRegistrationB){
+            CancelRegistrationWindow cancelRegistrationWindow = new CancelRegistrationWindow();
+            cancelRegistrationWindow.showFrame();
         }
     }
 }

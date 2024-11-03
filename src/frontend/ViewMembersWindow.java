@@ -17,7 +17,7 @@ public class ViewMembersWindow extends JFrame {
         setSize(600, 400);
         setLayout(new BorderLayout());
         this.setVisible(true);
-        this.setResizable(false);
+        this.setResizable(true);
 
         DefaultTableModel model = loadDataFromCsv(MEMBER_FILENAME);
         

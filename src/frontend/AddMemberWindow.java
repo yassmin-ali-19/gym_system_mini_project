@@ -43,7 +43,7 @@ public class AddMemberWindow extends JFrame implements ActionListener{
         this.setTitle("Add Member");
         this.setSize(600, 580);
         this.setVisible(true);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setResizable(false);
         this.setLocation(380, 80);
         this.setLayout(null);
@@ -142,14 +142,10 @@ public class AddMemberWindow extends JFrame implements ActionListener{
             }
             else if(trainerRole.addMember(inputId, inputName, inputMembershipType, inputEmail, inpuPhoneNumber, inputStatus)){
                 JOptionPane.showMessageDialog(null, "The Member with Id = " + inputId + " already exists", "Message", JOptionPane.ERROR_MESSAGE);
-                TrainerRoleWindow trainerRoleMenu = new TrainerRoleWindow();
-                trainerRoleMenu.showFrame();
                 dispose();
             }
             else{
                 JOptionPane.showMessageDialog(null, "The Member with Id = " + inputId + " is successfully added", "Message", JOptionPane.INFORMATION_MESSAGE);
-                TrainerRoleWindow trainerRoleMenu = new TrainerRoleWindow();
-                trainerRoleMenu.showFrame();
                 dispose();
             }
         }

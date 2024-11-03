@@ -46,22 +46,24 @@ public class TrainerRole {
     {
         return classDatabase.returnAllRecords();
     }
-    public boolean registerMemberForClass (String memberID, String classID, LocalDate registrationDate){
+    public int registerMemberForClass (String memberID, String classID, LocalDate registrationDate){
         if(classDatabase.contains(classID) && memberDatabase.contains(memberID)){
             Class newclass = classDatabase.getRecord(classID);
              int flag=0;
              if(newclass.getAvailableSeats()>0)flag=1;
              if(flag==1){
-             registrationDatabase.insertRecord(new MemberClassRegistration(memberID,classID,registrationDate,"active"));
-             newclass.setAvailableSeats(newclass.getAvailableSeats()-1);
-             registrationDatabase.saveToFile();
-             return true;
+                boolean found = registrationDatabase.insertRecord(new MemberClassRegistration(memberID,classID,registrationDate,"active"));
+                if(found)
+                    return 4;
+                newclass.setAvailableSeats(newclass.getAvailableSeats()-1);
+                registrationDatabase.saveToFile();
+                return 3;
              }
-             return false;
+             return 2;
         }
-        return false;
+        return 1;
     }
-    public boolean cancelRegistration (String memberID, String classID)
+    public int cancelRegistration (String memberID, String classID)
     {
         if(registrationDatabase.contains(memberID+classID)){
             MemberClassRegistration registration = registrationDatabase.getRecord(memberID+classID);
@@ -73,12 +75,13 @@ public class TrainerRole {
                 registration.setRegistrationStatus("canceled");
                 Class classs = classDatabase.getRecord(classID);
                 classs.setAvailableSeats(classs.getAvailableSeats()+1);
+                registrationDatabase.deleteRecord(memberID+classID);
                 registrationDatabase.saveToFile();
-                return true;
+                return 3;
             }
-            return false;
+            return 2;
         }
-        return false;
+        return 1;
     }
     
     public ArrayList<MemberClassRegistration> getListOfRegistrations () {

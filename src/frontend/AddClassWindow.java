@@ -41,7 +41,7 @@ public class AddClassWindow extends JFrame implements ActionListener{
         this.setTitle("Add Class");
         this.setSize(600, 580);
         this.setVisible(true);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setResizable(false);
         this.setLocation(380, 80);
         this.setLayout(null);
@@ -127,14 +127,10 @@ public class AddClassWindow extends JFrame implements ActionListener{
             }
             else if(trainerRole.addClass(inputClassId, inputClassName, inputTrainerId, Integer.parseInt(inputDuration), Integer.parseInt(inputmaxParticipants))){
                 JOptionPane.showMessageDialog(null, "The Class with Id = " + inputClassId + " already exists", "Message", JOptionPane.ERROR_MESSAGE);
-                TrainerRoleWindow trainerRoleMenu = new TrainerRoleWindow();
-                trainerRoleMenu.showFrame();
                 dispose();
             }
             else{
                 JOptionPane.showMessageDialog(null, "The Class with Id = " + inputClassId + " is successfully added", "Message", JOptionPane.INFORMATION_MESSAGE);
-                TrainerRoleWindow trainerRoleMenu = new TrainerRoleWindow();
-                trainerRoleMenu.showFrame();
                 dispose();
             }
         }

@@ -21,7 +21,7 @@ public class ViewClassesWindow extends JFrame{
         setSize(600, 400);
         setLayout(new BorderLayout());
         this.setVisible(true);
-        this.setResizable(false);
+        this.setResizable(true);
 
         DefaultTableModel model = loadDataFromCsv(CLASS_FILENAME);
         
