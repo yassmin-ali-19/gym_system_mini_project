@@ -67,6 +67,7 @@ public class ClassDatabase implements Database<Class>{
      */
     @Override
     public ArrayList<Class> returnAllRecords(){
+        this.readFromFile();
         return this.records;
     }
 
@@ -77,6 +78,7 @@ public class ClassDatabase implements Database<Class>{
      */
     @Override
     public boolean contains(String key){
+        this.readFromFile();
         for(Class record:this.records){
             if(key.equals(record.getSearchKey()))
                 return true;
@@ -91,6 +93,7 @@ public class ClassDatabase implements Database<Class>{
      */
     @Override
     public Class getRecord(String key){
+        this.readFromFile();
         for(Class record:this.records){
             if(key.equals(record.getSearchKey()))
                 return record;
@@ -103,14 +106,16 @@ public class ClassDatabase implements Database<Class>{
      * @param record
      */
     @Override
-    public void insertRecord(Class record){
+    public boolean insertRecord(Class record){
+        this.readFromFile();
         for(Class r:this.records){
             if(r.getSearchKey().equals(record.getSearchKey())){
                 System.out.println("Class already in system!!!");
-                return;
+                return true;
             }
         }
         this.records.add(record);
+        return false;
     }
 
     /**
@@ -119,6 +124,7 @@ public class ClassDatabase implements Database<Class>{
      */
     @Override
     public void deleteRecord(String key){
+        this.readFromFile();
         int i=0;
         for(Class record:this.records){
             if(key.equals(record.getSearchKey())){

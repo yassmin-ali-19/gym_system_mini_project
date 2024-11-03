@@ -4,6 +4,7 @@
  */
 package backend;
 
+import static constants.FileNames.*;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +16,7 @@ public class AdminRole {
     
 //    CONSTRUCTOR
     public AdminRole(){
-        database = new TrainerDatabase("Trainers.txt");
+        database = new TrainerDatabase(TRAINER_FILENAME);
     }
     
 //    METHODS

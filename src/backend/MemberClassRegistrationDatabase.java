@@ -68,6 +68,7 @@ public class MemberClassRegistrationDatabase implements Database<MemberClassRegi
      */
     @Override
     public ArrayList<MemberClassRegistration> returnAllRecords(){
+        this.readFromFile();
         return this.records;
     }
 
@@ -78,6 +79,7 @@ public class MemberClassRegistrationDatabase implements Database<MemberClassRegi
      */
     @Override
     public boolean contains(String key){
+        this.readFromFile();
         for(MemberClassRegistration record:this.records){
             if(key.equals(record.getSearchKey()))
                 return true;
@@ -92,6 +94,7 @@ public class MemberClassRegistrationDatabase implements Database<MemberClassRegi
      */
     @Override
     public MemberClassRegistration getRecord(String key){
+        this.readFromFile();
         for(MemberClassRegistration record:this.records){
             if(key.equals(record.getSearchKey()))
                 return record;
@@ -104,14 +107,16 @@ public class MemberClassRegistrationDatabase implements Database<MemberClassRegi
      * @param record
      */
     @Override
-    public void insertRecord(MemberClassRegistration record){
+    public boolean insertRecord(MemberClassRegistration record){
+        this.readFromFile();
         for(MemberClassRegistration r:this.records){
             if(r.getSearchKey().equals(record.getSearchKey())){
                 System.out.println("Member already registered in this class!!!");
-                return;
+                return true;
             }
         }
         this.records.add(record);
+        return false;
     }
 
     /**
@@ -120,6 +125,7 @@ public class MemberClassRegistrationDatabase implements Database<MemberClassRegi
      */
     @Override
     public void deleteRecord(String key){
+        this.readFromFile();
         int i=0;
         for(MemberClassRegistration record:this.records){
             if(key.equals(record.getSearchKey())){

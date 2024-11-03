@@ -67,6 +67,7 @@ public class TrainerDatabase implements Database<Trainer>{
      */
     @Override
     public ArrayList<Trainer> returnAllRecords(){
+        this.readFromFile();
         return this.records;
     }
 
@@ -77,6 +78,7 @@ public class TrainerDatabase implements Database<Trainer>{
      */
     @Override
     public boolean contains(String key){
+        this.readFromFile();
         for(Trainer record:this.records){
             if(key.equals(record.getSearchKey()))
                 return true;
@@ -91,6 +93,7 @@ public class TrainerDatabase implements Database<Trainer>{
      */
     @Override
     public Trainer getRecord(String key){
+        this.readFromFile();
         for(Trainer record:this.records){
             if(key.equals(record.getSearchKey()))
                 return record;
@@ -103,14 +106,16 @@ public class TrainerDatabase implements Database<Trainer>{
      * @param record
      */
     @Override
-    public void insertRecord(Trainer record){
+    public boolean insertRecord(Trainer record){
+        this.readFromFile();
         for(Trainer r:this.records){
             if(r.getSearchKey().equals(record.getSearchKey())){
                 System.out.println("Trainer already in system!!!");
-                return;
+                return true;
             }
         }
         this.records.add(record);
+        return false;
     }
 
     /**
@@ -119,6 +124,7 @@ public class TrainerDatabase implements Database<Trainer>{
      */
     @Override
     public void deleteRecord(String key){
+        this.readFromFile();
         int i=0;
         for(Trainer record:this.records){
             if(key.equals(record.getSearchKey())){

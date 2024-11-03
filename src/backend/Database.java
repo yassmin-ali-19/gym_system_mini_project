@@ -19,7 +19,7 @@ public interface Database<T>{
     public ArrayList<T> returnAllRecords();
     public boolean contains(String key);
     public T getRecord(String key);
-    public void insertRecord(T record);
+    public boolean insertRecord(T record);
     public void deleteRecord(String key);
     public void saveToFile();
 }

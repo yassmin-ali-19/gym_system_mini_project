@@ -4,6 +4,7 @@
  */
 package backend;
 
+import static constants.FileNames.*;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -19,14 +20,15 @@ public class TrainerRole {
     
     public TrainerRole()
     {
-        memberDatabase=new MemberDatabase("Members.txt");
-        classDatabase=new ClassDatabase("Classes.txt");
-        registrationDatabase=new MemberClassRegistrationDatabase("Registration.txt");
+        memberDatabase=new MemberDatabase(MEMBER_FILENAME);
+        classDatabase=new ClassDatabase(CLASS_FILENAME);
+        registrationDatabase=new MemberClassRegistrationDatabase(REGISTRATION_FILENAME);
     }
-    public void addMember(String memberID, String name, String membershipType, String email, String phoneNumber, String status)
+    public boolean addMember(String memberID, String name, String membershipType, String email, String phoneNumber, String status)
     {
-        memberDatabase.insertRecord(new Member(memberID,name,membershipType,email,phoneNumber,status));
+        boolean found = memberDatabase.insertRecord(new Member(memberID,name,membershipType,email,phoneNumber,status));
         memberDatabase.saveToFile();
+        return found;
     }
     
     public ArrayList<Member> getListOfMembers ()
@@ -34,10 +36,11 @@ public class TrainerRole {
        return memberDatabase.returnAllRecords();
     }
     
-    public void addClass (String classID, String className, String trainerID, int duration, int maxParticipants)
+    public boolean addClass (String classID, String className, String trainerID, int duration, int maxParticipants)
     {
-        classDatabase.insertRecord(new Class(classID,className,trainerID,duration,maxParticipants));
+        boolean found = classDatabase.insertRecord(new Class(classID,className,trainerID,duration,maxParticipants));
         classDatabase.saveToFile();
+        return found;
     }
     public ArrayList<Class> getListOfClasses ()
     {

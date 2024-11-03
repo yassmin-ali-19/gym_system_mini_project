@@ -18,12 +18,12 @@ public class Member extends User {
     }
 
     @Override
-    String lineRepresentation() {
+    public String lineRepresentation() {
         return this.memberId+","+this.name+","+this.membershipType+","+this.email+","+this.phoneNumber+","+this.status;
     }
 
     @Override
-    String getSearchKey() {
+    public String getSearchKey() {
        return this.memberId;
     }
     
